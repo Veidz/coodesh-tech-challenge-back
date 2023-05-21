@@ -59,7 +59,7 @@ namespace CoodeshTechChallenge.Application.Services
                 string type = transaction[..1];
                 string date = transaction.Substring(1, 25);
                 string product = transaction.Substring(26, 30).Trim();
-                string price = transaction.Substring(56, 10).TrimStart(new char[] { '0' }); // centavos
+                string price = transaction.Substring(56, 10).TrimStart(new char[] { '0' });
                 string seller = transaction[66..];
 
                 List<Type> types = await staticPersistenceType.GetFilterAsync((x) => x.Id == int.Parse(type));

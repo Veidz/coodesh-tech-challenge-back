@@ -42,7 +42,7 @@ namespace CoodeshTechChallenge.API.Controllers
                 }
                 else
                 {
-                    return StatusCode((int)HttpStatusCode.BadRequest, new ResultViewModel<string>("File does not exist"));
+                    return StatusCode((int)HttpStatusCode.BadRequest, new ResultViewModel<string>("File does not exist."));
                 }
             }
             catch (ValidationException ex)
