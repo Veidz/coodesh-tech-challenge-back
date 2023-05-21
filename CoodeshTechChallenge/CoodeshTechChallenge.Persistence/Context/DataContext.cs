@@ -11,5 +11,6 @@ namespace CoodeshTechChallenge.Persistence.Context
         public DbSet<Type> Type { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Seller> Seller { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
     }
 }

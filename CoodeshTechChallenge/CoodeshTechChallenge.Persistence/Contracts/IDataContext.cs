@@ -13,5 +13,6 @@ namespace CoodeshTechChallenge.Persistence.Contracts
         DbSet<Type> Type { get; set; }
         DbSet<Product> Product { get; set; }
         DbSet<Seller> Seller { get; set; }
+        DbSet<Transaction> Transaction { get; set; }
     }
 }
