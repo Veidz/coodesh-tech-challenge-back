@@ -38,6 +38,7 @@ namespace CoodeshTechChallenge.API
             services.AddScoped<ITransactionService, TransactionService>();
 
             services.AddScoped<IDynamicPersistence<Transaction>, DynamicPersistence<Transaction>>();
+            services.AddScoped<IStaticPersistence<Transaction>, StaticPersistence<Transaction>>();
             services.AddScoped<IStaticPersistence<Type>, StaticPersistence<Type>>();
             services.AddScoped<IStaticPersistence<Product>, StaticPersistence<Product>>();
             services.AddScoped<IStaticPersistence<Seller>, StaticPersistence<Seller>>();
