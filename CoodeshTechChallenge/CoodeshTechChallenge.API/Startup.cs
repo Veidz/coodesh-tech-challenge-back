@@ -26,7 +26,7 @@ namespace CoodeshTechChallenge.API
         {
             string connection = Configuration.GetConnectionString("Default")!;
 
-            services.AddDbContext<DataContext>(options =>
+            services.AddDbContext<IDataContext, DataContext>(options =>
             {
                 options.UseSqlServer(connection);
             });
@@ -54,6 +54,7 @@ namespace CoodeshTechChallenge.API
             }
 
             app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

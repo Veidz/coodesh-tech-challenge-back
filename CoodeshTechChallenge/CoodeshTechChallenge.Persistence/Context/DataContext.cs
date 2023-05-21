@@ -1,9 +1,10 @@
 ﻿using CoodeshTechChallenge.Domain;
+using CoodeshTechChallenge.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoodeshTechChallenge.Persistence.Context
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IDataContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 

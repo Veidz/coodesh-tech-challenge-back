@@ -8,10 +8,10 @@ namespace CoodeshTechChallenge.Persistence.Persistence
 {
     public class DynamicPersistence<D> : IDynamicPersistence<D> where D : class
     {
-        private readonly DbContext dbContext;
+        private readonly IDataContext dbContext;
         private readonly DbSet<D> dbSet;
 
-        public DynamicPersistence(DbContext dbContext)
+        public DynamicPersistence(IDataContext dbContext)
         {
             this.dbContext = dbContext;
             this.dbSet = this.dbContext != null ? this.dbContext.Set<D>() : throw new ArgumentNullException(nameof(dbContext));

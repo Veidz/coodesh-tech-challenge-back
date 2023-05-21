@@ -1,4 +1,5 @@
-﻿using CoodeshTechChallenge.Persistence.Contracts;
+﻿using CoodeshTechChallenge.Persistence.Context;
+using CoodeshTechChallenge.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace CoodeshTechChallenge.Persistence.Persistence
 {
     public class StaticPersistence<D> : IStaticPersistence<D> where D : class
     {
-        private readonly DbContext dbContext;
+        private readonly IDataContext dbContext;
         private readonly DbSet<D> dbSet;
 
-        public StaticPersistence(DbContext dbContext)
+        public StaticPersistence(IDataContext dbContext)
         {
             this.dbContext = dbContext;
             this.dbSet = this.dbContext != null ? this.dbContext.Set<D>() : throw new ArgumentNullException(nameof(dbContext));
