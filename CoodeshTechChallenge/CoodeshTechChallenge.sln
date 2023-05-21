@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoodeshTechChallenge.API", "CoodeshTechChallenge.API\CoodeshTechChallenge.API.csproj", "{4ECF4617-921B-4A5B-B307-7240969141AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTechChallenge.API", "CoodeshTechChallenge.API\CoodeshTechChallenge.API.csproj", "{4ECF4617-921B-4A5B-B307-7240969141AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTechChallenge.Domain", "CoodeshTechChallenge.Domain\CoodeshTechChallenge.Domain.csproj", "{3504939B-D6BA-4374-A2EC-40D5C035ABC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTechChallenge.Application", "CoodeshTechChallenge.Application\CoodeshTechChallenge.Application.csproj", "{BEEE26E8-0F19-41E1-9F89-9E326BA02615}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoodeshTechChallenge.Persistence", "CoodeshTechChallenge.Persistence\CoodeshTechChallenge.Persistence.csproj", "{9AD0A449-0CC7-4249-9EDC-9D06E9DCB438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoodeshTechChallenge.Test", "CoodeshTechChallenge.Test\CoodeshTechChallenge.Test.csproj", "{DBBCD90E-70D6-4A0A-AFE1-5EB80F289BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{4ECF4617-921B-4A5B-B307-7240969141AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ECF4617-921B-4A5B-B307-7240969141AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ECF4617-921B-4A5B-B307-7240969141AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3504939B-D6BA-4374-A2EC-40D5C035ABC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3504939B-D6BA-4374-A2EC-40D5C035ABC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3504939B-D6BA-4374-A2EC-40D5C035ABC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3504939B-D6BA-4374-A2EC-40D5C035ABC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEEE26E8-0F19-41E1-9F89-9E326BA02615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEEE26E8-0F19-41E1-9F89-9E326BA02615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEEE26E8-0F19-41E1-9F89-9E326BA02615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEEE26E8-0F19-41E1-9F89-9E326BA02615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD0A449-0CC7-4249-9EDC-9D06E9DCB438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD0A449-0CC7-4249-9EDC-9D06E9DCB438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD0A449-0CC7-4249-9EDC-9D06E9DCB438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD0A449-0CC7-4249-9EDC-9D06E9DCB438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBBCD90E-70D6-4A0A-AFE1-5EB80F289BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBBCD90E-70D6-4A0A-AFE1-5EB80F289BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBBCD90E-70D6-4A0A-AFE1-5EB80F289BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBBCD90E-70D6-4A0A-AFE1-5EB80F289BA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
