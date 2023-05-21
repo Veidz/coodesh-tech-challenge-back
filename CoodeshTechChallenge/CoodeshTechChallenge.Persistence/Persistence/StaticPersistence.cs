@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CoodeshTechChallenge.Persistence.Persistence
@@ -20,6 +22,11 @@ namespace CoodeshTechChallenge.Persistence.Persistence
         public async Task<List<D>> GetAsync()
         {
             return await this.dbSet.ToListAsync();
+        }
+
+        public async Task<List<D>> GetFilterAsync(Expression<Func<D, bool>> filterExpression)
+        {
+            return await this.dbSet.Where(filterExpression).ToListAsync();
         }
     }
 }

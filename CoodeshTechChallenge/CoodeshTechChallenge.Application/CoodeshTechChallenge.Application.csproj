@@ -5,4 +5,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoodeshTechChallenge.Domain\CoodeshTechChallenge.Domain.csproj" />
+    <ProjectReference Include="..\CoodeshTechChallenge.Persistence\CoodeshTechChallenge.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
