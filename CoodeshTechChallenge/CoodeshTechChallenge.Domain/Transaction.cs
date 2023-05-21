@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoodeshTechChallenge.Domain
 {
+    [Table("Transactions")]
     public class Transaction : Document
     {
         public DateTime Date { get; set; }
