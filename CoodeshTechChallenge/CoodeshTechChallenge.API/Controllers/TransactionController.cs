@@ -1,5 +1,6 @@
 ﻿using CoodeshTechChallenge.API.ViewModels;
 using CoodeshTechChallenge.Application.Contracts;
+using CoodeshTechChallenge.Application.DTO;
 using CoodeshTechChallenge.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +49,20 @@ namespace CoodeshTechChallenge.API.Controllers
             catch (ValidationException ex)
             {
                 return StatusCode((int)HttpStatusCode.BadRequest, new ResultViewModel<string>(ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultViewModel<string>(ex.Message));
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            try
+            {
+                List<TransactionOutput> transactions = await this.transactionService.GetAsync();
+                return StatusCode((int)HttpStatusCode.OK, new ResultViewModel<List<TransactionOutput>>(transactions));
             }
             catch (Exception ex)
             {

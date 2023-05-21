@@ -1,4 +1,5 @@
 ﻿using CoodeshTechChallenge.Application.Contracts;
+using CoodeshTechChallenge.Application.DTO;
 using CoodeshTechChallenge.Application.Exceptions;
 using CoodeshTechChallenge.Domain;
 using CoodeshTechChallenge.Persistence.Contracts;
@@ -14,18 +15,21 @@ namespace CoodeshTechChallenge.Application.Services
     public class TransactionService : ITransactionService
     {
         private readonly IDynamicPersistence<Transaction> dynamicPersistenceTransaction;
+        private readonly IStaticPersistence<Transaction> staticPersistenceTransaction;
         private readonly IStaticPersistence<Type> staticPersistenceType;
         private readonly IStaticPersistence<Product> staticPersistenceProduct;
         private readonly IStaticPersistence<Seller> staticPersistenceSeller;
 
         public TransactionService(
             IDynamicPersistence<Transaction> dynamicPersistenceTransaction,
+            IStaticPersistence<Transaction> staticPersistenceTransaction,
             IStaticPersistence<Type> staticPersistenceType,
             IStaticPersistence<Product> staticPersistenceProduct,
             IStaticPersistence<Seller> staticPersistenceSeller
         )
         {
             this.dynamicPersistenceTransaction = dynamicPersistenceTransaction;
+            this.staticPersistenceTransaction = staticPersistenceTransaction;
             this.staticPersistenceType = staticPersistenceType;
             this.staticPersistenceProduct = staticPersistenceProduct;
             this.staticPersistenceSeller = staticPersistenceSeller;
@@ -83,6 +87,34 @@ namespace CoodeshTechChallenge.Application.Services
             }
 
             return await this.dynamicPersistenceTransaction.PostListAsync(transactions);
+        }
+
+        public async Task<List<TransactionOutput>> GetAsync()
+        {
+            List<Transaction> transactions = await this.staticPersistenceTransaction.GetAsync();
+
+            List<TransactionOutput> transactionsOutput = new();
+
+            foreach (Transaction transaction in transactions)
+            {
+                Type type = staticPersistenceType.GetFilterAsync((x) => x.Id == transaction.Type).Result.FirstOrDefault()!;
+                Product product = staticPersistenceProduct.GetFilterAsync((x) => x.Id == transaction.Product).Result.FirstOrDefault()!;
+                Seller seller = staticPersistenceSeller.GetFilterAsync((x) => x.Id == transaction.Seller).Result.FirstOrDefault()!;
+
+                TransactionOutput transactionOutput = new()
+                {
+                    Id = transaction.Id,
+                    Date = transaction.Date,
+                    Type = type.Description,
+                    Product = product.Name,
+                    Price = transaction.Price,
+                    Seller = seller.Name
+                };
+
+                transactionsOutput.Add(transactionOutput);
+            }
+
+            return transactionsOutput;
         }
     }
 }
