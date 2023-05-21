@@ -18,16 +18,16 @@ namespace CoodeshTechChallenge.Application.Services
         private readonly IStaticPersistence<Seller> staticPersistenceSeller;
 
         public TransactionService(
+            IDynamicPersistence<Transaction> dynamicPersistenceTransaction,
             IStaticPersistence<Type> staticPersistenceType,
             IStaticPersistence<Product> staticPersistenceProduct,
-            IStaticPersistence<Seller> staticPersistenceSeller,
-            IDynamicPersistence<Transaction> dynamicPersistenceTransaction
+            IStaticPersistence<Seller> staticPersistenceSeller
         )
         {
+            this.dynamicPersistenceTransaction = dynamicPersistenceTransaction;
             this.staticPersistenceType = staticPersistenceType;
             this.staticPersistenceProduct = staticPersistenceProduct;
             this.staticPersistenceSeller = staticPersistenceSeller;
-            this.dynamicPersistenceTransaction = dynamicPersistenceTransaction;
         }
 
         public async Task<List<Transaction>> PostAsync(string fileInputText)
