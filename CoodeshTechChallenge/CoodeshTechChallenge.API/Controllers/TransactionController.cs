@@ -1,4 +1,5 @@
-﻿using CoodeshTechChallenge.Application.Contracts;
+﻿using CoodeshTechChallenge.API.ViewModels;
+using CoodeshTechChallenge.Application.Contracts;
 using CoodeshTechChallenge.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Transaction = CoodeshTechChallenge.Domain.Transaction;
@@ -35,21 +37,21 @@ namespace CoodeshTechChallenge.API.Controllers
                     MemoryStream memoryStream = new();
                     file.OpenReadStream().CopyTo(memoryStream);
                     string fileTextInput = Encoding.ASCII.GetString(memoryStream.ToArray());
-                    List<Transaction> trasactions = await this.transactionService.PostAsync(fileTextInput);
-                    return Ok(trasactions);
+                    List<Transaction> transactions = await this.transactionService.PostAsync(fileTextInput);
+                    return StatusCode((int)HttpStatusCode.Created, new ResultViewModel<List<Transaction>>(transactions));
                 }
                 else
                 {
-                    return BadRequest("File does not exist");
+                    return StatusCode((int)HttpStatusCode.BadRequest, new ResultViewModel<string>("File does not exist"));
                 }
             }
             catch (ValidationException ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode((int)HttpStatusCode.BadRequest, new ResultViewModel<string>(ex.Message));
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResultViewModel<string>(ex.Message));
             }
         }
     }
