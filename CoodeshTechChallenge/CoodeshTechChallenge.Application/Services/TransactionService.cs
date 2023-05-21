@@ -1,4 +1,5 @@
 ﻿using CoodeshTechChallenge.Application.Contracts;
+using CoodeshTechChallenge.Application.Exceptions;
 using CoodeshTechChallenge.Domain;
 using CoodeshTechChallenge.Persistence.Contracts;
 using System;
@@ -65,9 +66,9 @@ namespace CoodeshTechChallenge.Application.Services
                 List<Product> products = await staticPersistenceProduct.GetFilterAsync((x) => x.Name == product);
                 List<Seller> sellers = await staticPersistenceSeller.GetFilterAsync((x) => x.Name == seller);
 
-                if (types.FirstOrDefault() == null) throw new Exception();
-                if (products.FirstOrDefault() == null) throw new Exception();
-                if (sellers.FirstOrDefault() == null) throw new Exception();
+                if (types.FirstOrDefault() == null) throw new ValidationException("Type is invalid.");
+                if (products.FirstOrDefault() == null) throw new ValidationException("Product is invalid.");
+                if (sellers.FirstOrDefault() == null) throw new ValidationException("Seller is invalid.");
 
                 Transaction transactionDb = new()
                 {

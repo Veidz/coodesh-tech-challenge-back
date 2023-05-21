@@ -1,4 +1,5 @@
 ﻿using CoodeshTechChallenge.Application.Contracts;
+using CoodeshTechChallenge.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -41,6 +42,10 @@ namespace CoodeshTechChallenge.API.Controllers
                 {
                     return BadRequest("File does not exist");
                 }
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
