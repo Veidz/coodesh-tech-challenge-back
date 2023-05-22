@@ -24,6 +24,11 @@ namespace CoodeshTechChallenge.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+
             string connection = Configuration.GetConnectionString("Default")!;
 
             services.AddDbContext<IDataContext, DataContext>(options =>
