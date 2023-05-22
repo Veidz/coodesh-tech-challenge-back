@@ -41,7 +41,7 @@ cd CoodeshTechChallenge/CoodeshTechChallenge.API && dotnet ef database update
 Now we run the application
 
 ```
-cd CoodeshTechChallenge/CoodeshTechChallenge.API && dotnet run
+cd CoodeshTechChallenge/CoodeshTechChallenge.API && dotnet run --launch-profile https
 ```
 
 Access swagger docs [here](http://localhost:5254/swagger/index.html)
